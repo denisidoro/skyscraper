@@ -1,7 +1,7 @@
-# Skyscraper by Lars Muldjord
+# Skyscraper by Lars Muldjord and modded by denisidoro
 A powerful and versatile yet easy to use game scraper written in C++ for use with multiple frontends running on a Linux system (macOS and Windows too, but not officially supported). It scrapes and caches various game resources from various scraping sources, including media such as screenshot, cover and video. It then gives you the option to generate a game list and artwork for the chosen frontend by combining all of the cached resources.
 
-All Skyscraper features are [well-documented](https://github.com/muldjord/skyscraper/tree/master/docs) and there's also a [F.A.Q](https://github.com/muldjord/skyscraper/blob/master/docs/FAQ.md). If you still have questions after reading the documentation, please consider asking them on the [RetroPie subreddit](https://www.reddit.com/r/RetroPie/) or in the official [RetroPie forums](https://retropie.org.uk/forum). The `Issues` page here on Github is for bug reports and feature requests only. Thanks!
+All Skyscraper features are [well-documented](https://github.com/denisidoro/skyscraper/tree/master/docs) and there's also a [F.A.Q](https://github.com/denisidoro/skyscraper/blob/master/docs/FAQ.md). If you still have questions after reading the documentation, please consider asking them on the [RetroPie subreddit](https://www.reddit.com/r/RetroPie/) or in the official [RetroPie forums](https://retropie.org.uk/forum). The `Issues` page here on Github is for bug reports and feature requests only. Thanks!
 
 ##### Code contributions
 Pull Requests are not currently accepted. Due to wanting to pursue other projects after having worked on Skyscraper for 3 years, I am currently only fixing scraper-breaking bugs in Skyscraper. For any functionality beyond what is already in place, feel free to fork Skyscraper and fit it to your needs. I am no longer actively considering or commenting user feature requests or pull requests. When / if this changes, this text will be updated.
@@ -54,7 +54,7 @@ When you've installed the prerequisites as described above, you can install Skys
 $ cd
 $ mkdir skysource
 $ cd skysource
-$ wget -q -O - https://raw.githubusercontent.com/muldjord/skyscraper/master/update_skyscraper.sh | bash
+$ wget -q -O - https://raw.githubusercontent.com/denisidoro/skyscraper/master/update_skyscraper.sh | bash
 ```
 The last command will download and run the latest update script from Github. During the installation you might be asked for your sudo password. On RetroPie the default password is `raspberry`.
 
@@ -129,7 +129,7 @@ One of Skyscraper's most powerful features is the resource cache. It's important
 ### Custom data
 I addition to allowing scraping from locally cached resources, Skyscraper also allows you to import your own data into the resource cache with the `-s import` scraping module. You can also edit existing resources in the cache or add individual `user` resources with the `--cache edit` command. Lastly, you also have the option of importing existing EmulationStation game list data into the Skyscraper resource cache if you need it. You can do this with the `-s esgamelist` scraping module.
 
-To read more about any of the features described above, please check out all of the documentation [here](https://github.com/muldjord/skyscraper/tree/master/docs).
+To read more about any of the features described above, please check out all of the documentation [here](https://github.com/denisidoro/skyscraper/tree/master/docs).
 
 ### Artwork look and effects
 Check the full artwork documentation [here](docs/ARTWORK.md)

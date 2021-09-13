@@ -1621,7 +1621,7 @@ void Skyscraper::doPrescrapeJobs()
       config.threads = 4; // Don't change! This limit was set by request from IGDB
     }
     if(config.user.isEmpty() || config.password.isEmpty()) {
-      printf("The IGDB scraping module requires free user credentials to work. Read more about that here: 'https://github.com/muldjord/skyscraper/blob/master/docs/SCRAPINGMODULES.md#igdb'\n");
+      printf("The IGDB scraping module requires free user credentials to work. Read more about that here: 'https://github.com/denisidoro/skyscraper/blob/master/docs/SCRAPINGMODULES.md#igdb'\n");
       exit(1);
     }
     printf("Fetching IGDB authentication token status, just a sec...\n");
@@ -1661,7 +1661,7 @@ void Skyscraper::doPrescrapeJobs()
 	  tokenFile.close();
 	}
       } else {
-	printf("\033[1;33mReceived invalid IGDB server response. This can be caused by server issues or maybe you entered your credentials incorrectly in the Skyscraper configuration. Read more about that here: 'https://github.com/muldjord/skyscraper/blob/master/docs/SCRAPINGMODULES.md#igdb'\033[0m\n");
+	printf("\033[1;33mReceived invalid IGDB server response. This can be caused by server issues or maybe you entered your credentials incorrectly in the Skyscraper configuration. Read more about that here: 'https://github.com/denisidoro/skyscraper/blob/master/docs/SCRAPINGMODULES.md#igdb'\033[0m\n");
 	exit(1);
       }
     } else {

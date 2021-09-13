@@ -19,7 +19,7 @@
     if [ $LATEST != $VERSION ]
     then
 	echo "--- Fetching Skyscraper v.$LATEST ---"
-	wget -N https://github.com/muldjord/skyscraper/archive/${LATEST}.tar.gz || handle_error "fetch"
+	wget -N https://github.com/denisidoro/skyscraper/archive/${LATEST}.tar.gz || handle_error "fetch"
 	echo "--- Unpacking ---"
 	tar xvzf ${LATEST}.tar.gz --strip-components 1 --overwrite || handle_error "unpack"
 	rm ${LATEST}.tar.gz
