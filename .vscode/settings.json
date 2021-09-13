@@ -1,4 +1,19 @@
 {
    "editor.formatOnPaste": false,
-   "editor.formatOnSave": false
+   "editor.formatOnSave": false,
+   "files.associations": {
+      "*.cheat": "shellscript",
+      "*.arc*": "jsonc",
+      "*.eslintrc": "jsonc",
+      "*.envrc": "shellscript",
+      "*.uql": "sql",
+      "*.proto.txt": "ruby",
+      "*rc": "shellscript",
+      "*BUILD": "shellscript",
+      "*config": "ini",
+      "__locale": "cpp",
+      "__string": "cpp",
+      "string": "cpp",
+      "string_view": "cpp"
+   }
 }

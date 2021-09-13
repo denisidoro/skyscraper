@@ -124,7 +124,7 @@ void ScreenScraper::getSearchResults(QList<GameEntry> &gameEntries,
       if(jsonErrorFile.open(QIODevice::WriteOnly)) {
 	if(data.length() > 64) {
 	  jsonErrorFile.write(data);
-	  printf("The erroneous answer was written to '/home/USER/.skyscraper/screenscraper_error.json'. If this file contains game data, please consider filing a bug report at 'https://github.com/muldjord/skyscraper/issues' and attach that file.\n");
+	  printf("The erroneous answer was written to '/home/USER/.skyscraper/screenscraper_error.json'. If this file contains game data, please consider filing a bug report at 'https://github.com/denisidoro/skyscraper/issues' and attach that file.\n");
 	}
 	jsonErrorFile.close();
       }
@@ -350,7 +350,7 @@ void ScreenScraper::getCover(GameEntry &game)
 
 void ScreenScraper::getScreenshot(GameEntry &game)
 {
-  QString url = getJsonText(jsonObj["medias"].toArray(), REGION, QList<QString>({"ss"}));
+  QString url = getJsonText(jsonObj["medias"].toArray(), REGION, QList<QString>({"ss", "sstitle"}));
   if(!url.isEmpty()) {
     bool moveOn = true;
     for(int retries = 0; retries < RETRIESMAX; ++retries) {

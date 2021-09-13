@@ -7,7 +7,7 @@ about: Create a bug report to help improve Skyscraper
 **READ BEFORE YOU POST**
 This is for BUG / ERROR reports only! Are you sure what you are experiencing is a BUG? Have you asked the community about it first? If not, then please consider doing so, either at the RetroPie forums (https://retropie.org.uk/forum) or the RetroPie subreddit (https://www.reddit.com/r/RetroPie) where other users might be able to help you out.
 
-Also, please read the documentation (https://github.com/muldjord/skyscraper/tree/master/docs) thoroughtly. Every feature and option is documented down to the last detail.
+Also, please read the documentation (https://github.com/denisidoro/skyscraper/tree/master/docs) thoroughtly. Every feature and option is documented down to the last detail.
 
 If you've encountered a bug, please TAKE YOUR TIME to describe it well using the following template. Lackluster reports will be deleted without response. I would expect it to be several lines of text long with a well-described example and proper documentation on how to re-produce the problem. Thanks! :)
 

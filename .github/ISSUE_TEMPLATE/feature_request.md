@@ -7,7 +7,7 @@ about: Suggest an idea for future versions of Skyscraper
 **READ BEFORE YOU POST**
 This is for FEATURE REQUESTS only. If you have questions about the general use of Skyscraper, please ask them at the RetroPie forums (https://retropie.org.uk/forum) or the RetroPie subreddit (https://www.reddit.com/r/RetroPie) where other users might be able to help you out.
 
-Also, please read the documentation (https://github.com/muldjord/skyscraper/tree/master/docs) thoroughtly. Every feature and option is documented down to the last detail.
+Also, please read the documentation (https://github.com/denisidoro/skyscraper/tree/master/docs) thoroughtly. Every feature and option is documented down to the last detail.
 
 NOTE! I am not currently actively implementing new features into Skyscraper due to wanting to pursue other projects. Feel free to submit your feature request, but know that I won't be looking into it anytime soon.
 
