@@ -2,7 +2,12 @@
 set -euo pipefail
 set -x
 
-rm VERSION
+source "VERSION"
+LATEST="$VERSION"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    rm VERSION
+fi
 
 build() {
     echo "--- Cleaning out old build if one exists ---"
