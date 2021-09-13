@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
 
   QCommandLineParser parser;
 
-  QString headerString = "Running Skyscraper v" VERSION " by Lars Muldjord";
+  QString headerString = "Running Skyscraper v" VERSION " by Lars Muldjord and denisidoro";
   QString dashesString = "";
   for(int a = 0; a < headerString.length(); ++a) {
     dashesString += "-";

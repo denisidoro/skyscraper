@@ -1,6 +1,6 @@
-; --------------------------------------------------------------------
-; Skyscraper by Lars Muldjord (https://github.com/muldjord/skyscraper)
-; --------------------------------------------------------------------
+; -----------------------------------------------------------------------------------------------
+; Skyscraper by Lars Muldjord and modded by denisidoro (https://github.com/denisidoro/skyscraper)
+; -----------------------------------------------------------------------------------------------
 
 ; This is an example config file for use with Skyscraper. Use it as a template for creating
 ;   your own. If you copy this file to 'config.ini' it will be used by default.

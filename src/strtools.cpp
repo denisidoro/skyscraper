@@ -325,7 +325,7 @@ QString StrTools::conformTags(const QString str)
 
 QString StrTools::getVersionHeader()
 {
-  QString headerString = "Running Skyscraper v" VERSION " by Lars Muldjord";
+  QString headerString = "Running Skyscraper v" VERSION " by Lars Muldjord and modded by denisidoro";
   QString dashesString = "";
   for(int a = 0; a < headerString.length(); ++a) {
     dashesString += "-";
