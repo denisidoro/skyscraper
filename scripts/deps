@@ -1,0 +1,46 @@
+#!/bin/bash
+set -euo pipefail
+set -x
+
+get_platform() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "osx"  
+  elif echo "${PREFIX:-}" | grep -q "com.termux"; then
+    echo "termux"
+  else
+    echo "linux"
+  fi
+}
+
+export PLATFORM="$(get_platform)"
+
+_install() { 
+   if command -v "$1"; then 
+      return 0;
+   fi
+
+   case "$PLATFORM" in
+      "osx") brew install "$@" ;;
+      "termux") pkg add "$@" ;;
+      "linux") sudo apt-get install -y "$@" ;;
+   esac
+} 
+
+main() {
+  _install git bash tar
+
+  case "$PLATFORM" in
+    "osx")
+      _install brew qt5
+      brew link qt5 --force || true
+      ;;
+    "termux")
+      _install x11-repo qt5-qtbase
+      ;;
+    "linux")
+      _install build-essential qtbase5-dev qt5-qmake qtbase5-dev-tools
+      ;;
+   esac
+}
+
+main

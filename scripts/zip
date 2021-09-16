@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+set -x
+
+export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+
+main() {
+  local -r target="${SKYSCRAPER_HOME}/target"
+  mkdir -p "$target" || true
+  sudo cp "$(which Skyscraper)" "${target}/Skyscraper"
+  cd "$target"
+  ls -la .
+  tar -czf skyscraper.tar.gz ./*
+  ls -la .
+}
+
+main

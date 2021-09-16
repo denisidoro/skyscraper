@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+set -x
+
+main() {
+   Skyscraper -h | grep 'modded by'
+}
+
+main

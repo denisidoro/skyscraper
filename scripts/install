@@ -2,6 +2,8 @@
 set -euo pipefail
 set -x
 
+export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+
 source "VERSION"
 LATEST="$VERSION"
 
@@ -10,6 +12,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 build() {
+    cd "$SKYSCRAPER_HOME"
     echo "--- Cleaning out old build if one exists ---"
     make --ignore-errors clean || true
     rm --force .qmake.stash || true

@@ -9,8 +9,10 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
       - name: Install deps
-        run: sudo apt install build-essential qtbase5-dev qt5-qmake qtbase5-dev-tools
+        run: ./scripts/deps
       - name: Build
-        run: ./update_skyscraper.sh
-      - name: Run
-        run: Skyscraper -h | grep 'modded by'
+        run: ./scripts/install
+      - name: Test
+        run: ./scripts/test
+      - name: (WIP) Zip
+        run: ./scripts/zip
