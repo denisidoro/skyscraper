@@ -15,14 +15,22 @@ get_platform() {
 export PLATFORM="$(get_platform)"
 
 _install() { 
-   if command -v "$1"; then 
-      return 0;
+   local deps=()
+
+   for dep in "$@"; do
+      if ! command -v "$dep"; then 
+         deps+=("$dep");
+      fi
+   done
+
+   if [ ${#deps[@]} -eq 0 ]; then
+      return 0
    fi
 
    case "$PLATFORM" in
-      "osx") brew install "$@" ;;
-      "termux") pkg add "$@" ;;
-      "linux") sudo apt-get install -y "$@" ;;
+      "osx") brew install "${deps[@]}" ;;
+      "termux") pkg add "${deps[@]}" ;;
+      "linux") sudo apt-get install -y "${deps[@]}" ;;
    esac
 } 
 
