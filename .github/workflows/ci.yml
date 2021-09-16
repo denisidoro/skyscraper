@@ -11,6 +11,8 @@ jobs:
       - name: Install deps
         run: sudo apt install build-essential qtbase5-dev qt5-qmake qtbase5-dev-tools
       - name: Build
-        run: ./update_skyscraper.sh
+        run: ./scripts/install
       - name: Run
         run: Skyscraper -h | grep 'modded by'
+      - name: (WIP) Zip
+        run: ./scripts/zip
