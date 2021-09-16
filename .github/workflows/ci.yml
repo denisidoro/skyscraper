@@ -12,7 +12,7 @@ jobs:
         run: ./scripts/deps
       - name: Build
         run: ./scripts/install
-      - name: Run
-        run: Skyscraper -h | grep 'modded by'
+      - name: Test
+        run: ./scripts/test
       - name: (WIP) Zip
         run: ./scripts/zip
