@@ -1,3 +1,70 @@
+#### Version x.x.x (Features under consideration, all unimplemented)
+* Add the option to scrape from cached data purely originating from certain scraping modules
+* Consider making aliasMap the global baseName instead of just the search term base name. This will fix missing brackets in alias names being ignored later on
+* Make all artwork types custom meaning that their type can be whatever the user wants. The sources will create ones with known types such as 'screenshot' and 'cover', but the user can import other types they define themselves, such as 'cabinet' or whatever else. Internally artwork is then handled by a list of artwork instead of 4 hardcoded types in GameEntry
+* Introduce the ability to use <BASENAME> in the 'file="somefolder/<BASENAME>.png"' in artwork.xml which would then look for a file in 'resources' with the game basename.png allowing users to use their own custom artwork data as a workaround to adding new types to import (Thank you to 'jueank' for suggesting this)
+* Add the option of scraping custom platforms by configuring them in the config with an alias to an already existing platform. Example: scrape 'pcenginecd' could be scraped as 'pcengine' in case you have those files in a 'roms/pcenginecd' folder instead of the pcengine folder. Check here: https://github.com/muldjord/skyscraper/issues/136
+* Create a testmode for the artwork compositor that let's you quickly render an example to see if you got everything set up right in the artwork xml
+* Allow 'region' to be a list similar to 'regionPrios'. When using 'region' it should simply keep the default priority list and add those from 'region' to the top. 'regionPrios' should still overwrite it entirely. Naming change probably a good idea, for instance rename 'region' to 'regionsPrefer' or something. 'regionPrios' should probably also be changed to 'regionsOverride'. (Thank you to 'corezon' for suggesting this).
+* Implement a less ridig filename match for the 'import' module to allow for close match filenames
+* Add support for grouping multi-disk games so they only have one entry in the gamelists. See issues/232 (Thank you to 'igno2k' for suggesting this)
+
+#### Version 3.6.15 (25th August 2021)
+* Added 'chd' extension to 'atomiswave' platform (Thank you to user 'smeegoan' for reporting this)
+* Fixed bug that caused 'T000000' to be added multiple times when skipping entries in ES gamelists (Thank you to user 'sleve_mcdichael' for reporting this)
+
+#### Version 3.6.14 (5th August 2021)
+* Added 'windows 3.x' as alias to Mobygames scraping module (Thank you to user 'ecto' for reporting this)
+
+#### Version 3.6.13 (2nd June 2021)
+* Added 'mediaFolderHidden' EmulationStation specific config option that will set the media folder to 'PLATFORM/.media' when set to true. This can speed up EmulationStation initial loading when using slow storage such as a network file system (Thank you to user 'XenuIsWatching' for suggesting this)
+
+#### Version 3.6.12 (15th May 2021)
+* Removed 'Simple Mode' as it was broken and deprecated. Use RetroPie script instead
+* Removed A LOT of deprecated (and hidden) CLI options
+
+#### Version 3.6.11 (6th May 2021)
+* '--fromfile' now accepts both relative and absolute path to filename (Thank you to user 'sleve_mcdichael' for reporting this)
+* Added platforms 'atarijaguarcd', 'pcenginecd' and 'channelf' (Thank you to user 'XenuIsWatching' for providing info)
+
+#### Version 3.6.10 (12th April 2021)
+* Added 'naomi' as platform
+* Added 'msx2' as platform
+* Added 'atomiswave' as platform
+
+#### Version 3.6.9 (1st April 2021)
+* Probably fixed `--flags unpack` which broke with 3.6.8 due to deprecated Qt function calls
+* Probably fixed video conversion which broke with 3.6.8 due to deprecated Qt function calls
+
+#### Version 3.6.8 (31st March 2021)
+* Added 'cacheRefresh' config.ini option and added it to default config.ini for 'esgamelist' module (Thank you to user 'penx' for suggesting this)
+* 'ScreenScraper APIv2 returned invalid / empty Json' message now no longer includes message to attach the error json file unless it's more than 64 bytes long
+* Added 'ca' to region priority list (Thank you to user 'joaoluizcarvalho' for pointing this out)
+* Added 'de', 'fr' and 'es' to default language priority list
+* Added 'players' resource to '--cache report:missing' CLI option (Thank you to user 'peligwe' for reporting this)
+* Added 'theInFront' config.ini option and 'theinfront' CLI flag (Thank you to user 'sleve_mcdichael' for suggesting this)
+* 'unattend' and 'unattendSkip' can now be used in a scraping module section in config.ini (Thank you to user 'sleve_mcdichael' for reporting this)
+* Added Qt version pre-processor checks for deprecated Qt methods to avoid compilation warning on newer Qt installations
+
+#### Version 3.6.7 (27th January 2021)
+* Added '*.rvz' extension for 'wii' and 'gc' platforms (Thank you to user 'tcamargo' for reporting this)
+* Added '*.chd' extension for '3do' platform (Thank you to user 'Roudaku' for reporting this)
+* Added 'openbor' platform. Exists in RetroPie as experimental platform (as requested by user 'hahnmt')
+* 'neogeo' platform now uses 'box-2D' as cover instead of 'flyer' when scraping with the ScreenScraper module (Thank you to user 'retro81' for suggesting this)
+
+#### Version 3.6.6 (21st December 2020)
+* The 'esgamelist' module now looks for the 'gamelist.xml' file in the path set with '-g' instead of the path set with '-i' (Thank you to user 'c0d3h4x0r' for reporting this and helping me debug it)
+
+#### Version 3.6.5 (18th December 2020)
+* Now uses one shared networking instance, instead of one per thread
+* 'daphne' platform entries now added as '<game>' entries instead of '<folder>' entries (Thank you to user 'clyde' for helping figure this out)
+* Added 'nocropblack' cli flag and 'cropBlack="BOOL"' config.ini option that allows user to disable cropping of black borders around screenshots when compositing the final gamelist artwork (Thank you to user 'WindyWinston' for suggesting this)
+
+#### Version 3.6.1 (27th October 2020)
+* Added 'amigacd32' as a separate platform just because (Thank you to user 'HoraceAndTheSpider' for resetting The Matrix)
+
+#### Version 3.6.0 (25th October 2020)
+* Changed 'SecsSinceEpich' to 'MSecsSinceEpich' to support pre-5.8 Qt versions (Thank you to user 'Hazza4569' for reporting this)
 
 #### Version 3.5.9 (24th October 2020)
 * Implemented the new IGDB v4 authentication method. IGDB will now work again, and requires free credentials. Read more about that [here](https://github.com/denisidoro/skyscraper/blob/master/docs/SCRAPINGMODULES.md#igdb)
