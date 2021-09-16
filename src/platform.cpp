@@ -278,7 +278,7 @@ QStringList Platform::getScrapers(QString platform)
     scrapers.append("screenscraper");
     scrapers.append("thegamesdb");
   } else if(platform == "ps3") {
-    scrapers.append("thegamesdb");
+    scrapers.append("screenscraper");
   } else if(platform == "ps4") {
     scrapers.append("thegamesdb");
   } else if(platform == "ps5") {
