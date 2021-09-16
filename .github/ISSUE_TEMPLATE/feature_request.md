@@ -1,22 +1,20 @@
 ---
 name: Feature request
-about: Suggest an idea for future versions of Skyscraper
+about: Suggest an idea for this project
+title: ''
+labels: new feature
+assignees: ''
 
 ---
 
-**READ BEFORE YOU POST**
-This is for FEATURE REQUESTS only. If you have questions about the general use of Skyscraper, please ask them at the RetroPie forums (https://retropie.org.uk/forum) or the RetroPie subreddit (https://www.reddit.com/r/RetroPie) where other users might be able to help you out.
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-Also, please read the documentation (https://github.com/denisidoro/skyscraper/tree/master/docs) thoroughtly. Every feature and option is documented down to the last detail.
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
 
-NOTE! I am not currently actively implementing new features into Skyscraper due to wanting to pursue other projects. Feel free to submit your feature request, but know that I won't be looking into it anytime soon.
-
-With that said: If you have a specific feature request please take your time to describe it well using the following template.
-
-Please remove the text down to this point before proceeding.
-
-**Describe the feature / request**
-[Replace this text with a clear and concise description of what this feature would achieve and how you would like it to be implemented. Be as specific and technically descriptive as possible.]
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
 
 **Additional context**
-[Replace this text with any additional context that might help understand this request better. Optional.]
+Add any other context or screenshots about the feature request here.
