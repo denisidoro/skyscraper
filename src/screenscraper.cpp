@@ -758,6 +758,8 @@ QString ScreenScraper::getPlatformId(const QString platform)
     return "135";
   } else if(platform == "ps2") {
     return "58";
+  } else if(platform == "ps3") {
+    return "59";
   } else if(platform == "psp") {
     return "61";
   } else if(platform == "psx") {
@@ -774,6 +776,8 @@ QString ScreenScraper::getPlatformId(const QString platform)
     return "109";
   } else if(platform == "snes") {
     return "4";
+  } else if(platform == "switch") {
+    return "225";
   } else if(platform == "ti99") {
     return "205";
   } else if(platform == "trs-80") {

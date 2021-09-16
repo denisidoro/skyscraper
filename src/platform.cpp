@@ -105,6 +105,9 @@ QStringList Platform::getPlatforms()
   platforms.append("pokemini");
   platforms.append("ports");
   platforms.append("ps2");
+  platforms.append("ps3");
+  platforms.append("ps4");
+  platforms.append("ps5");
   platforms.append("psp");
   platforms.append("psx");
   platforms.append("saturn");
@@ -114,6 +117,7 @@ QStringList Platform::getPlatforms()
   platforms.append("sg-1000");
   platforms.append("snes");
   platforms.append("steam");
+  platforms.append("switch");
   platforms.append("ti99");
   platforms.append("trs-80");
   platforms.append("vectrex");
@@ -273,6 +277,12 @@ QStringList Platform::getScrapers(QString platform)
   } else if(platform == "ps2") {
     scrapers.append("screenscraper");
     scrapers.append("thegamesdb");
+  } else if(platform == "ps3") {
+    scrapers.append("screenscraper");
+  } else if(platform == "ps4") {
+    scrapers.append("thegamesdb");
+  } else if(platform == "ps5") {
+    scrapers.append("thegamesdb");
   } else if(platform == "psp") {
     scrapers.append("screenscraper");
   } else if(platform == "psx") {
@@ -292,6 +302,8 @@ QStringList Platform::getScrapers(QString platform)
   } else if(platform == "snes") {
     scrapers.append("screenscraper");
   } else if(platform == "steam") {
+    scrapers.append("screenscraper");
+  } else if(platform == "switch") {
     scrapers.append("screenscraper");
   } else if(platform == "ti99") {
     scrapers.append("screenscraper");
@@ -475,6 +487,12 @@ QString Platform::getFormats(QString platform, QString extensions, QString addEx
     formats.append("*.com *.sh *.bat *.exe *.conf");
   } else if(platform == "ps2") {
     formats.append("*.iso *.cue *.img *.mdf *.z *.z2 *.bz2 *.dump *.cso *.ima *.gz");
+  } else if(platform == "ps3") {
+    formats.append("*.iso *.bin");
+  } else if(platform == "ps4") {
+    formats.append("*.iso *.bin");
+  } else if(platform == "ps5") {
+    formats.append("*.iso *.bin");
   } else if(platform == "psp") {
     formats.append("*.cso *.iso *.pbp");
   } else if(platform == "psx") {
@@ -491,6 +509,8 @@ QString Platform::getFormats(QString platform, QString extensions, QString addEx
     formats.append("*.bin *.sg");
   } else if(platform == "snes") {
     formats.append("*.smc *.sfc *.fig *.swc *.mgd *.bin");
+  } else if(platform == "switch") {
+    formats.append("*.xci *.nsp *.nca");
   } else if(platform == "ti99") {
     formats.append("*.ctg");
   } else if(platform == "trs-80") {
@@ -657,6 +677,12 @@ QString Platform::getDefaultScraper(QString platform)
     scraper = "cache";
   } else if(platform == "ps2") {
     scraper = "cache";
+  } else if(platform == "ps3") {
+    scraper = "cache";
+  } else if(platform == "ps4") {
+    scraper = "cache";
+  } else if(platform == "ps5") {
+    scraper = "cache";
   } else if(platform == "psp") {
     scraper = "cache";
   } else if(platform == "psx") {
@@ -674,6 +700,8 @@ QString Platform::getDefaultScraper(QString platform)
   } else if(platform == "snes") {
     scraper = "cache";
   } else if(platform == "steam") {
+    scraper = "cache";
+  } else if(platform == "switch") {
     scraper = "cache";
   } else if(platform == "ti99") {
     scraper = "cache";
@@ -1395,6 +1423,15 @@ QStringList Platform::getAliases(QString platform)
   } else if(platform == "ps2") {
     aliases.append("playstation 2");
     aliases.append("sony playstation 2");
+  } else if(platform == "ps3") {
+    aliases.append("playstation 3");
+    aliases.append("sony playstation 3");
+  } else if(platform == "ps4") {
+    aliases.append("playstation 4");
+    aliases.append("sony playstation 4");
+  } else if(platform == "ps5") {
+    aliases.append("playstation 5");
+    aliases.append("sony playstation 5");
   } else if(platform == "psp") {
     aliases.append("sony playstation portable");
     aliases.append("playstation portable");
@@ -1443,6 +1480,8 @@ QStringList Platform::getAliases(QString platform)
     // Adding these consoles because 'thegamesdb' often only return these instead of PC versions
     aliases.append("microsoft xbox one");
     aliases.append("sony playstation 4");
+  } else if(platform == "switch") {
+    aliases.append("nintendo switch");
   } else if(platform == "ti99") {
     aliases.append("ti-99/4a");
     aliases.append("texas instruments ti-99");
