@@ -110,11 +110,11 @@ void ScraperWorker::run()
 
     // For Amiga platform, change to subplatforms if detected as such
     if(config.platform == "amiga") {
-      if(info.completeBaseName().toLower().contains("cd32") ||
+      if(StrTools::getBaseName(info).toLower().contains("cd32") ||
 	 info.suffix() == "cue" || info.suffix() == "iso" || info.suffix() == "img") {
 	debug.append("Platform change: 'amiga'->'cd32'\n");
 	config.platform = "cd32";
-      } else if(info.completeBaseName().toLower().contains("cdtv")) {
+      } else if(StrTools::getBaseName(info).toLower().contains("cdtv")) {
 	debug.append("Platform change: 'amiga'->'cdtv', filename contains 'cdtv'\n");
 	config.platform = "cdtv";
       }
@@ -143,7 +143,7 @@ void ScraperWorker::run()
       // Skip this file. '--flags onlymissing' has been set.
       game.found = false;
       game.title = compareTitle;
-      output.append("\033[1;33m---- Skipping game '" + info.completeBaseName() + "' since 'onlymissing' flag has been set ----\033[0m\n\n");
+      output.append("\033[1;33m---- Skipping game '" + StrTools::getBaseName(info) + "' since 'onlymissing' flag has been set ----\033[0m\n\n");
       game.resetMedia();
       emit entryReady(game, output, debug);
       if(forceEnd) {
@@ -216,7 +216,7 @@ void ScraperWorker::run()
     int searchMatch = getSearchMatch(game.title, compareTitle, lowestDistance);
     game.searchMatch = searchMatch;
     if(searchMatch < config.minMatch) {
-      output.append("\033[1;33m---- Game '" + info.completeBaseName() + "' match too low :| ----\033[0m\n\n");
+      output.append("\033[1;33m---- Game '" + StrTools::getBaseName(info) + "' match too low :| ----\033[0m\n\n");
       game.found = false;
       game.resetMedia();
       if(!forceEnd)
@@ -229,7 +229,7 @@ void ScraperWorker::run()
       }
     }
 
-    output.append("\033[1;34m---- Game '" + info.completeBaseName() + "' found! :) ----\033[0m\n");
+    output.append("\033[1;34m---- Game '" + StrTools::getBaseName(info) + "' found! :) ----\033[0m\n");
     
     if(!fromCache) {
       scraper->getGameData(game);
@@ -237,13 +237,13 @@ void ScraperWorker::run()
 
     if(!config.pretend && config.scraper == "cache") {
       // Process all artwork
-      compositor.saveAll(game, info.completeBaseName());
+      compositor.saveAll(game, StrTools::getBaseName(info));
       // Copy or symlink videos as requested
       if(config.videos &&
 	 game.videoFormat != "" &&
 	 !game.videoFile.isEmpty() &&
 	 QFile::exists(game.videoFile)) {
-	QString videoDst = config.videosFolder + "/" + info.completeBaseName() + "." + game.videoFormat;
+	QString videoDst = config.videosFolder + "/" + StrTools::getBaseName(info) + "." + game.videoFormat;
 	if(config.skipExistingVideos && QFile::exists(videoDst)) {
 	} else {
 	  if(QFile::exists(videoDst)) {
@@ -293,7 +293,7 @@ void ScraperWorker::run()
     }
 
     // Don't unescape title since we already did that in getBestEntry()
-    game.videoFile = StrTools::xmlUnescape(config.videosFolder + "/" + info.completeBaseName() + "." + game.videoFormat);
+    game.videoFile = StrTools::xmlUnescape(config.videosFolder + "/" + StrTools::getBaseName(info) + "." + game.videoFormat);
     game.description = StrTools::xmlUnescape(game.description);
     game.releaseDate = StrTools::xmlUnescape(game.releaseDate);
     // Make sure we have the correct 'yyyymmdd' format of 'releaseDate'
@@ -325,7 +325,7 @@ void ScraperWorker::run()
     } else {
       game.title = StrTools::xmlUnescape(game.title);
       if(config.forceFilename) {
-	game.title = StrTools::xmlUnescape(StrTools::stripBrackets(info.completeBaseName()));
+	game.title = StrTools::xmlUnescape(StrTools::stripBrackets(StrTools::getBaseName(info)));
       }
       if(config.brackets) {
 	game.title.append(StrTools::xmlUnescape((game.parNotes != ""?" " + game.parNotes:"") + (game.sqrNotes != ""?" " + game.sqrNotes:"")));

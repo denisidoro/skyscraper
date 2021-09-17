@@ -360,10 +360,10 @@ QString StrTools::getBaseName(const QFileInfo &info) {
 
   if (absPath.contains("PS3_GAME")) {
      baseName = absPath;
-     printf("compareTitle0: '%s'\n", baseName.toStdString().c_str());
+     // printf("compareTitle0: '%s'\n", baseName.toStdString().c_str());
      QRegularExpressionMatch match = QRegularExpression("\\[(.+)\\]").match(baseName);
      if(match.hasMatch() && match.capturedStart(1) != -1) {
-       printf("captured(1): '%s'\n", match.captured(1).toStdString().c_str());
+       // printf("captured(1): '%s'\n", match.captured(1).toStdString().c_str());
        baseName = match.captured(1);
      } 
   }
