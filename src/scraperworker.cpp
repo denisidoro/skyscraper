@@ -189,19 +189,19 @@ void ScraperWorker::run()
     }
     // Fill it with additional needed data
     game.path = info.absoluteFilePath();
-    game.baseName = info.completeBaseName();
+    game.baseName = StrTools::getBaseName(info);
     game.cacheId = cacheId;
 
     // Sort out brackets here prior to not found checks, in case user has 'skipped="true"' set
     game.sqrNotes = NameTools::getSqrNotes(game.title);
     game.parNotes = NameTools::getParNotes(game.title);
-    game.sqrNotes.append(NameTools::getSqrNotes(info.completeBaseName()));
-    game.parNotes.append(NameTools::getParNotes(info.completeBaseName()));
+    game.sqrNotes.append(NameTools::getSqrNotes(game.baseName));
+    game.parNotes.append(NameTools::getParNotes(game.baseName));
     game.sqrNotes = NameTools::getUniqueNotes(game.sqrNotes, '[');
     game.parNotes = NameTools::getUniqueNotes(game.parNotes, '(');
     
     if(game.found == false) {
-      output.append("\033[1;33m---- Game '" + info.completeBaseName() + "' not found :( ----\033[0m\n\n");
+      output.append("\033[1;33m---- Game '" + game.baseName + "' not found :( ----\033[0m\n\n");
       game.resetMedia();
       if(!forceEnd)
 	forceEnd = limitReached(output);

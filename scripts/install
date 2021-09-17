@@ -4,11 +4,16 @@ set -x
 
 export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
 
+cleanup() {
+   mv VERSION.bk VERSION || true
+}
+
+cleanup
 source "VERSION"
 LATEST="$VERSION"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    rm VERSION
+    mv VERSION VERSION.bk || true
 fi
 
 build() {
@@ -28,4 +33,5 @@ main() {
     build
 }
 
+trap cleanup EXIT
 main

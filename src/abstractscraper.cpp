@@ -419,7 +419,7 @@ bool AbstractScraper::checkNom(const QString nom)
 
 QList<QString> AbstractScraper::getSearchNames(const QFileInfo &info)
 {
-  QString baseName = info.completeBaseName();
+  QString baseName = StrTools::getBaseName(info);
 
   if(config->scraper != "import") {
     if(!config->aliasMap[baseName].isEmpty()) {
@@ -480,7 +480,7 @@ QList<QString> AbstractScraper::getSearchNames(const QFileInfo &info)
 
 QString AbstractScraper::getCompareTitle(QFileInfo info)
 {
-  QString baseName = info.completeBaseName();
+  QString baseName = StrTools::getBaseName(info);
 
   if(config->scraper != "import") {
     if(!config->aliasMap[baseName].isEmpty()) {
@@ -507,10 +507,8 @@ QString AbstractScraper::getCompareTitle(QFileInfo info)
   // Now create actual compareTitle
   baseName = baseName.replace("_", " ").left(baseName.indexOf("(")).left(baseName.indexOf("[")).simplified();
 
-  QRegularExpressionMatch match;
-
   // Always move ", The" to the beginning of the name
-  match = QRegularExpression(", [Tt]he").match(baseName);
+  QRegularExpressionMatch match = QRegularExpression(", [Tt]he").match(baseName);
   if(match.hasMatch()) {
     baseName = baseName.replace(match.captured(0), "").prepend(match.captured(0).right(3) + " ");
   }
@@ -521,6 +519,7 @@ QString AbstractScraper::getCompareTitle(QFileInfo info)
     baseName = baseName.left(match.capturedStart(0)).simplified();
   }
     
+  printf("compareTitle1: '%s'\n", baseName.toStdString().c_str());
   return baseName;
 }
 
