@@ -27,6 +27,7 @@
 #define STRTOOLS_H
 
 #include <QObject>
+#include <QDir>
 
 class StrTools : public QObject
 {
@@ -43,7 +44,7 @@ public:
   static QString stripBrackets(const QString str);
   static QString stripHtmlTags(QString str);
   static QString getMd5Sum(const QByteArray &data);
-
+  static QString getBaseName(const QFileInfo &info);
 };
 
 #endif // STRTOOLS_H

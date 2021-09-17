@@ -313,7 +313,7 @@ void OpenRetro::getMarquee(GameEntry &game)
 
 QList<QString> OpenRetro::getSearchNames(const QFileInfo &info)
 {
-  QString baseName = info.completeBaseName();
+  QString baseName = StrTools::getBaseName(info);
   QList<QString> searchNames;
   bool isAga = false;
   // Look for '_aga_' or '[aga]' with the last char optional

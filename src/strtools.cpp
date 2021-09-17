@@ -353,3 +353,20 @@ QString StrTools::getMd5Sum(const QByteArray &data)
   md5.addData(data);
   return md5.result().toHex();
 }
+
+QString StrTools::getBaseName(const QFileInfo &info) {
+  QString baseName = info.completeBaseName();
+  QString absPath = info.absolutePath();
+
+  if (absPath.contains("PS3_GAME")) {
+     baseName = absPath;
+     // printf("compareTitle0: '%s'\n", baseName.toStdString().c_str());
+     QRegularExpressionMatch match = QRegularExpression("\\[(.+)\\]").match(baseName);
+     if(match.hasMatch() && match.capturedStart(1) != -1) {
+       // printf("captured(1): '%s'\n", match.captured(1).toStdString().c_str());
+       baseName = match.captured(1);
+     } 
+  }
+
+  return baseName;
+}

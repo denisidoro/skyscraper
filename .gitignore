@@ -1,5 +1,7 @@
 *.o
 moc_*
+*.tmp
+*.bk
 Makefile
 .qmake*
 Skyscraper.app/**/*
