@@ -354,7 +354,7 @@ QString StrTools::getMd5Sum(const QByteArray &data)
   return md5.result().toHex();
 }
 
-QString StrTools::getBaseName(QFileInfo info) {
+QString StrTools::getBaseName(const QFileInfo &info) {
   QString baseName = info.completeBaseName();
   QString absPath = info.absolutePath();
 

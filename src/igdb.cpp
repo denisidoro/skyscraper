@@ -296,7 +296,7 @@ void Igdb::getRating(GameEntry &game)
 
 QList<QString> Igdb::getSearchNames(const QFileInfo &info)
 {
-  QString baseName = info.completeBaseName();
+  QString baseName = StrTools::getBaseName(info);
 
   if(!config->aliasMap[baseName].isEmpty()) {
     baseName = config->aliasMap[baseName];

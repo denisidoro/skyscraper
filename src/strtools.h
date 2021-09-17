@@ -44,7 +44,7 @@ public:
   static QString stripBrackets(const QString str);
   static QString stripHtmlTags(QString str);
   static QString getMd5Sum(const QByteArray &data);
-  static QString getBaseName(QFileInfo info);
+  static QString getBaseName(const QFileInfo &info);
 };
 
 #endif // STRTOOLS_H
