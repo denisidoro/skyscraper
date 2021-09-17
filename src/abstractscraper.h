@@ -30,6 +30,7 @@
 #include "netmanager.h"
 #include "gameentry.h"
 #include "settings.h"
+#include "strtools.h"
 
 #include <QImage>
 #include <QEventLoop>
@@ -38,97 +39,96 @@
 
 class AbstractScraper : public QObject
 {
-  Q_OBJECT
+   Q_OBJECT
 
 public:
-  AbstractScraper(Settings *config,
-		  QSharedPointer<NetManager> manager);
-  virtual ~AbstractScraper();
-  virtual void getGameData(GameEntry &game);
-  virtual QList<QString> getSearchNames(const QFileInfo &info);
-  virtual QString getCompareTitle(QFileInfo info);
-  virtual void runPasses(QList<GameEntry> &gameEntries, const QFileInfo &info, QString &output, QString &debug);
+   AbstractScraper(Settings *config,
+                   QSharedPointer<NetManager> manager);
+   virtual ~AbstractScraper();
+   virtual void getGameData(GameEntry &game);
+   virtual QList<QString> getSearchNames(const QFileInfo &info);
+   virtual QString getCompareTitle(QFileInfo info);
+   virtual void runPasses(QList<GameEntry> &gameEntries, const QFileInfo &info, QString &output, QString &debug);
 
-  //void setConfig(Settings *config);
+   //void setConfig(Settings *config);
 
-  int reqRemaining = -1;
+   int reqRemaining = -1;
 
 protected:
-  Settings *config;
+   Settings *config;
 
-  virtual void getSearchResults(QList<GameEntry> &gameEntries, QString searchName,
-				QString platform);
-  virtual void getDescription(GameEntry &game);
-  virtual void getDeveloper(GameEntry &game);
-  virtual void getPublisher(GameEntry &game);
-  virtual void getPlayers(GameEntry &game);
-  virtual void getAges(GameEntry &game);
-  virtual void getTags(GameEntry &game);
-  virtual void getRating(GameEntry &game);
-  virtual void getReleaseDate(GameEntry &game);
-  virtual void getCover(GameEntry &game);
-  virtual void getScreenshot(GameEntry &game);
-  virtual void getWheel(GameEntry &game);
-  virtual void getMarquee(GameEntry &game);
-  virtual void getVideo(GameEntry &game);
+   virtual void getSearchResults(QList<GameEntry> &gameEntries, QString searchName,
+                                 QString platform);
+   virtual void getDescription(GameEntry &game);
+   virtual void getDeveloper(GameEntry &game);
+   virtual void getPublisher(GameEntry &game);
+   virtual void getPlayers(GameEntry &game);
+   virtual void getAges(GameEntry &game);
+   virtual void getTags(GameEntry &game);
+   virtual void getRating(GameEntry &game);
+   virtual void getReleaseDate(GameEntry &game);
+   virtual void getCover(GameEntry &game);
+   virtual void getScreenshot(GameEntry &game);
+   virtual void getWheel(GameEntry &game);
+   virtual void getMarquee(GameEntry &game);
+   virtual void getVideo(GameEntry &game);
 
-  virtual void nomNom(const QString nom, bool including = true);
+   virtual void nomNom(const QString nom, bool including = true);
 
-  virtual bool platformMatch(QString found, QString platform);
-  virtual QString getPlatformId(const QString);
+   virtual bool platformMatch(QString found, QString platform);
+   virtual QString getPlatformId(const QString);
 
-  bool checkNom(const QString nom);
+   bool checkNom(const QString nom);
 
-  QList<int> fetchOrder;
+   QList<int> fetchOrder;
 
-  QByteArray data;
+   QByteArray data;
 
-  QString baseUrl;
-  QString searchUrlPre;
-  QString searchUrlPost;
+   QString baseUrl;
+   QString searchUrlPre;
+   QString searchUrlPost;
 
-  QString searchResultPre;
+   QString searchResultPre;
 
-  QList<QString> urlPre;
-  QString urlPost;
-  QList<QString> titlePre;
-  QString titlePost;
-  QList<QString> platformPre;
-  QString platformPost;
-  QList<QString> descriptionPre;
-  QString descriptionPost;
-  QList<QString> developerPre;
-  QString developerPost;
-  QList<QString> publisherPre;
-  QString publisherPost;
-  QList<QString> playersPre;
-  QString playersPost;
-  QList<QString> agesPre;
-  QString agesPost;
-  QList<QString> tagsPre;
-  QString tagsPost;
-  QList<QString> ratingPre;
-  QString ratingPost;
-  QList<QString> releaseDatePre;
-  QString releaseDatePost;
-  QList<QString> coverPre;
-  QString coverPost;
-  QList<QString> screenshotPre;
-  QString screenshotPost;
-  QString screenshotCounter;
-  QList<QString> wheelPre;
-  QString wheelPost;
-  QList<QString> marqueePre;
-  QString marqueePost;
-  QList<QString> videoPre;
-  QString videoPost;
+   QList<QString> urlPre;
+   QString urlPost;
+   QList<QString> titlePre;
+   QString titlePost;
+   QList<QString> platformPre;
+   QString platformPost;
+   QList<QString> descriptionPre;
+   QString descriptionPost;
+   QList<QString> developerPre;
+   QString developerPost;
+   QList<QString> publisherPre;
+   QString publisherPost;
+   QList<QString> playersPre;
+   QString playersPost;
+   QList<QString> agesPre;
+   QString agesPost;
+   QList<QString> tagsPre;
+   QString tagsPost;
+   QList<QString> ratingPre;
+   QString ratingPost;
+   QList<QString> releaseDatePre;
+   QString releaseDatePost;
+   QList<QString> coverPre;
+   QString coverPost;
+   QList<QString> screenshotPre;
+   QString screenshotPost;
+   QString screenshotCounter;
+   QList<QString> wheelPre;
+   QString wheelPost;
+   QList<QString> marqueePre;
+   QString marqueePost;
+   QList<QString> videoPre;
+   QString videoPost;
 
-  // This is used when file names have a region in them. The original regionPrios is in Settings
-  QList<QString> regionPrios;
+   // This is used when file names have a region in them. The original regionPrios is in Settings
+   QList<QString> regionPrios;
 
-  NetComm *netComm;
-  QEventLoop q; // Event loop for use when waiting for data from NetComm.
-
+   NetComm *netComm;
+   QEventLoop q; // Event loop for use when waiting for data from NetComm.
 };
 
 #endif // ABSTRACTSCRAPER_H

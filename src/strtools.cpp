@@ -355,7 +355,7 @@ QString StrTools::getMd5Sum(const QByteArray &data)
 }
 
 QString StrTools::getBaseName(QFileInfo info) {
-  QString baseName = info.completeBaseName(); // OK
+  QString baseName = info.completeBaseName();
   QString absPath = info.absolutePath();
 
   if (absPath.contains("PS3_GAME")) {

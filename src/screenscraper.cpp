@@ -536,7 +536,7 @@ QList<QString> ScreenScraper::getSearchNames(const QFileInfo &info)
 
   // For some reason the APIv2 example from their website does not url encode '(' and ')'
   // so I've excluded them
-  hashList.append(QUrl::toPercentEncoding(info.fileName(), "()"));
+  hashList.append(QUrl::toPercentEncoding(StrTools::getBaseName(info), "()"));
   hashList.append(crcResult.toUpper());
   hashList.append(md5Result.toUpper());
   hashList.append(sha1Result.toUpper());

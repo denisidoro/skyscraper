@@ -140,14 +140,15 @@ void ImportScraper::runPasses(QList<GameEntry> &gameEntries, const QFileInfo &in
   marqueeFile = "";
   videoFile = "";
   GameEntry game;
-  bool textualFound = checkType(info.completeBaseName(), textual, textualFile);
-  bool screenshotFound = checkType(info.completeBaseName(), screenshots, screenshotFile);
-  bool coverFound = checkType(info.completeBaseName(), covers, coverFile);
-  bool wheelFound = checkType(info.completeBaseName(), wheels, wheelFile);
-  bool marqueeFound = checkType(info.completeBaseName(), marquees, marqueeFile);
-  bool videoFound = checkType(info.completeBaseName(), videos, videoFile);
+  QString baseName = StrTools::getBaseName(info);
+  bool textualFound = checkType(baseName, textual, textualFile);
+  bool screenshotFound = checkType(baseName, screenshots, screenshotFile);
+  bool coverFound = checkType(baseName, covers, coverFile);
+  bool wheelFound = checkType(baseName, wheels, wheelFile);
+  bool marqueeFound = checkType(baseName, marquees, marqueeFile);
+  bool videoFound = checkType(baseName, videos, videoFile);
   if(textualFound || screenshotFound || coverFound || wheelFound || marqueeFound || videoFound) {
-    game.title = info.completeBaseName();
+    game.title = baseName;
     game.platform = config->platform;
     gameEntries.append(game);
   }
@@ -155,7 +156,7 @@ void ImportScraper::runPasses(QList<GameEntry> &gameEntries, const QFileInfo &in
 
 QString ImportScraper::getCompareTitle(QFileInfo info)
 {
-  return info.completeBaseName();
+  return StrTools::getBaseName(info);
 }
 
 void ImportScraper::getCover(GameEntry &game)
