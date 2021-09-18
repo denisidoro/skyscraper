@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+set -x
+
+export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+
+TERMUX_PKG_NAME="skyscraper"
+TERMUX_PKG_BIN_NAME="Skyscraper"
+
+main() {
+   cd "$SKYSCRAPER_HOME"
+
+   git clone https://github.com/termux/termux-packages --depth 1
+   git clone https://github.com/termux/x11-packages --depth 1
+
+   mv termux-packages/packages .
+   mv x11-packages/packages/* ./packages
+
+   mkdir -p "./packages/${TERMUX_PKG_NAME}" || true
+   cp scripts/build.sh "./packages/${TERMUX_PKG_NAME}"
+
+   "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a aarch64 -I "$TERMUX_PKG_NAME"
+
+   mkdir -p out
+   docker cp "termux-package-builder:/data/data/com.termux/files/usr/bin/${TERMUX_PKG_BIN_NAME}" "out"
+}
+
+main
