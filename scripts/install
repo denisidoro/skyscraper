@@ -17,16 +17,16 @@ run_termux_docker() {
 
    cd "$SKYSCRAPER_HOME"
 
+   mkdir -p "./packages/${PKG_NAME}" || true
+   ls -la "./scripts"
+   cp "./scripts/build.sh" "./packages/${PKG_NAME}/build.sh"
+   ls -la "./packages/${PKG_NAME}"
+
    git clone https://github.com/termux/termux-packages --depth 1
    git clone https://github.com/termux/x11-packages --depth 1 || true
 
    mv termux-packages/packages .
    mv x11-packages/packages/* ./packages || true
-
-   mkdir -p "./packages/${PKG_NAME}" || true
-   ls -la "./scripts"
-   cp "./scripts/build.sh" "./packages/${PKG_NAME}/build.sh"
-   ls -la "./packages/${PKG_NAME}"
 
    "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a "$arch" "$PKG_NAME"
 
