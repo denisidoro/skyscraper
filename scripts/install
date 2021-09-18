@@ -17,6 +17,10 @@ run_termux_docker() {
 
    cd "$SKYSCRAPER_HOME"
 
+   tree .
+
+   rm -rf packages || true
+
    mkdir -p "./packages/${PKG_NAME}" || true
    ls -la "./scripts"
    cp "./scripts/build.sh" "./packages/${PKG_NAME}/build.sh"
