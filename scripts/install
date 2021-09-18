@@ -20,7 +20,6 @@ run_termux_docker() {
    git clone https://github.com/termux/termux-packages --depth 1
    git clone https://github.com/termux/x11-packages --depth 1 || true
 
-   cp -r termux-packages/packages/* ./packages
    cp -r x11-packages/packages/* ./termux-packages/packages || true
    mkdir -p "./termux-packages/packages/${PKG_NAME}" || true
    cp "./scripts/build.sh" "./termux-packages/packages/${PKG_NAME}/build.sh"
