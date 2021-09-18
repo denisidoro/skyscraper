@@ -7,10 +7,17 @@ export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
 main() {
   local -r target="${SKYSCRAPER_HOME}/target"
   mkdir -p "$target" || true
-  sudo cp "$(which Skyscraper)" "${target}/Skyscraper"
+   
+  local bin="Skyscraper"
+  if command -v Skyscraper; then
+    bin="$(which Skyscraper)"
+  fi
+
+  sudo cp "$bin" "${target}/Skyscraper"
+
   cd "$target"
   ls -la .
-  tar -czf skyscraper.tar.gz ./*
+  tar -czf skyscraper.tar.gz *
   ls -la .
 }
 
