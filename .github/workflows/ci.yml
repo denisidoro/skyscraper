@@ -22,6 +22,6 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
       - name: Build
-        run: ./scripts/install android_aarch64
+        run: ./scripts/install android-aarch64
       - name: Test
         run: file target/Skyscraper
