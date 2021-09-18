@@ -3,6 +3,8 @@ set -euo pipefail
 set -x
 
 export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+export PKG_NAME="skyscraper"
+export PKG_BIN_NAME="Skyscraper"
 
 cleanup() {
    mv VERSION.bk VERSION || true
@@ -13,9 +15,6 @@ cleanup
 run_termux_docker() {
    local -r arch="$1"
 
-   TERMUX_PKG_NAME="skyscraper"
-   TERMUX_PKG_BIN_NAME="Skyscraper"
-
    cd "$SKYSCRAPER_HOME"
 
    git clone https://github.com/termux/termux-packages --depth 1
@@ -24,15 +23,16 @@ run_termux_docker() {
    mv termux-packages/packages .
    mv x11-packages/packages/* ./packages || true
 
-   mkdir -p "./packages/${TERMUX_PKG_NAME}" || true
-   cp "./scripts/build.sh" "./packages/${TERMUX_PKG_NAME}"
-   ls -la "./packages/${TERMUX_PKG_NAME}"
+   mkdir -p "./packages/${PKG_NAME}" || true
+   ls -la "./scripts"
+   cp "./scripts/build.sh" "./packages/${PKG_NAME}/build.sh"
+   ls -la "./packages/${PKG_NAME}"
 
-   "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a "$arch" "$TERMUX_PKG_NAME"
+   "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a "$arch" "$PKG_NAME"
 
    rm -rf target || true
    mkdir -p target || true
-   docker cp "termux-package-builder:/data/data/com.termux/files/usr/bin/${TERMUX_PKG_BIN_NAME}" "target"
+   docker cp "termux-package-builder:/data/data/com.termux/files/usr/bin/${PKG_BIN_NAME}" "target"
 }
 
 build() {
@@ -57,7 +57,7 @@ build() {
 
 main() {
    case "${1:-}" in
-      "android_aarch64") run_termux_docker "aarch64" ;;
+      "android-aarch64") run_termux_docker "aarch64" ;;
       *) build ;;
    esac
 }

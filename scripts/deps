@@ -35,6 +35,10 @@ _install() {
 } 
 
 main() {
+   case "${1:-}" in
+      "android-aarch64") return 0 ;;
+   esac
+
   _install git bash tar
 
   case "$PLATFORM" in
@@ -51,4 +55,4 @@ main() {
    esac
 }
 
-main
+main "$@"
