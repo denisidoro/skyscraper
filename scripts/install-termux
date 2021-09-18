@@ -19,7 +19,7 @@ main() {
    mkdir -p "./packages/${TERMUX_PKG_NAME}" || true
    cp scripts/build.sh "./packages/${TERMUX_PKG_NAME}"
 
-   "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a aarch64 -I "$TERMUX_PKG_NAME"
+   "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a aarch64 "$TERMUX_PKG_NAME"
 
    mkdir -p out
    docker cp "termux-package-builder:/data/data/com.termux/files/usr/bin/${TERMUX_PKG_BIN_NAME}" "out"
