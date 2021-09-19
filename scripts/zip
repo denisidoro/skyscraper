@@ -6,19 +6,18 @@ export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
 source "${SKYSCRAPER_HOME}/scripts/core.sh"
 
 main() {
-  local -r target="${SKYSCRAPER_HOME}/target"
-  mkdir -p "$target" || true
+  mkdir -p "$TARGET_PATH" || true
    
-  local bin="Skyscraper"
-  if command -v Skyscraper; then
-    bin="$(which Skyscraper)"
+  local bin="${TARGET_BIN}"
+  if command -v "${PKG_BIN_NAME}"; then
+    bin="$(which "${PKG_BIN_NAME}")"
   fi
 
-  sudo cp "$bin" "${target}/skyscraper"
+  sudo cp "$bin" "${TARGET_PATH}/${PKG_NAME}"
 
-  cd "$target"
+  cd "$TARGET_PATH"
   ls -la .
-  tar -czf skyscraper.tar.gz *
+  tar -czf "${PKG_NAME}.tar.gz" *
   ls -la .
 }
 

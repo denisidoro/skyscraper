@@ -6,7 +6,7 @@ export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
 source "${SKYSCRAPER_HOME}/scripts/core.sh"
 
 _test_android() {
-   file "${SKYSCRAPER_HOME}/target/Skyscraper" | grep "$1"
+   file "$TARGET_BIN" | grep "$1"
 }
 
 main() {
