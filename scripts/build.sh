@@ -13,7 +13,13 @@ termux_step_make_install() {
    pwd
    ls
    export PATH="${TERMUX_PREFIX}/opt/qt/cross/bin:${PATH}"
-cd 
+cd /home/builder/termux-packages
+pwd
+ls
+cd packages
+ls
+cd buildsrc
+ls
    ./scripts/install
 	install -Dm755 -t $TERMUX_PREFIX/bin Skyscraper
 }
