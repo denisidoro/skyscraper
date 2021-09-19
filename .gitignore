@@ -5,3 +5,6 @@ moc_*
 Makefile
 .qmake*
 Skyscraper.app/**/*
+packages
+*-packages
+target

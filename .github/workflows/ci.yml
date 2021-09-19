@@ -14,5 +14,3 @@ jobs:
         run: ./scripts/install
       - name: Test
         run: ./scripts/test
-      - name: (WIP) Zip
-        run: ./scripts/zip

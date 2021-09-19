@@ -3,14 +3,21 @@ set -euo pipefail
 set -x
 
 export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+source "${SKYSCRAPER_HOME}/scripts/core.sh"
 
 main() {
-  local -r target="${SKYSCRAPER_HOME}/target"
-  mkdir -p "$target" || true
-  sudo cp "$(which Skyscraper)" "${target}/Skyscraper"
-  cd "$target"
+  mkdir -p "$TARGET_PATH" || true
+   
+  local bin="$TARGET_BIN"
+  if command -v "${PKG_BIN_NAME}"; then
+    bin="$(which "${PKG_BIN_NAME}")"
+  fi
+
+  sudo cp "$bin" "${TARGET_PATH}/${PKG_NAME}"
+
+  cd "$TARGET_PATH"
   ls -la .
-  tar -czf skyscraper.tar.gz ./*
+  tar -czf "${PKG_NAME}.tar.gz" "${PKG_NAME}"
   ls -la .
 }
 
