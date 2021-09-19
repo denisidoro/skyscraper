@@ -11,4 +11,4 @@ jobs:
       - name: Build
         run: ./scripts/install android-aarch64
       - name: Test
-        run: file target/Skyscraper
+        run: file target/Skyscraper android-aarch64

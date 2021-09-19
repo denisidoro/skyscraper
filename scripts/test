@@ -2,8 +2,13 @@
 set -euo pipefail
 set -x
 
+export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+
 main() {
-   Skyscraper -h | grep 'modded by'
+   case "${1:-}" in
+      "android-aarch64") file "${SKYSCRAPER_HOME}/target/Skyscraper" | grep 'aarch64' ;;
+      *) Skyscraper -h | grep 'modded by' ;;
+   esac
 }
 
-main
+main "$@"

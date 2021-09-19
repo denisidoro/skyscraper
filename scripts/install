@@ -16,16 +16,19 @@ run_termux_docker() {
    local -r arch="$1"
 
    cd "$SKYSCRAPER_HOME"
-mkdir buildsrc
-   cp -R * buildsrc || true
+
+   mkdir ./buildsrc
+   cp -R ./* ./buildsrc || true
 
    git clone https://github.com/termux/termux-packages --depth 1
-   git clone https://github.com/termux/x11-packages --depth 1 || true
 
-   cp -r x11-packages/packages/* ./termux-packages/packages || true
+   git clone https://github.com/termux/x11-packages --depth 1 || true
+   cp -r ./x11-packages/packages/* "./termux-packages/packages" || true
+   
    mkdir -p "./termux-packages/packages/${PKG_NAME}" || true
-   cp "./scripts/build.sh" "./termux-packages/packages/${PKG_NAME}/build.sh"
-mv buildsrc ./termux-packages/packages/
+   rm "./termux-packages/packages/${PKG_NAME}/build.sh" || true
+   cp ./scripts/build.sh "./termux-packages/packages/${PKG_NAME}/build.sh"
+   mv ./buildsrc ./termux-packages/packages/
 
    "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a "$arch" -I "$PKG_NAME"
 
@@ -38,7 +41,7 @@ build() {
    source "VERSION"
    LATEST="$VERSION"
 
-   if [[ "$OSTYPE" == "darwin"* ]]; then
+   if [[ "$OSTYPE" == *"arwin"* ]]; then
       mv VERSION VERSION.bk || true
    fi
 
