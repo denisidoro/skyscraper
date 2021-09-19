@@ -24,7 +24,7 @@ run_termux_docker() {
    cp -r x11-packages/packages/* ./termux-packages/packages || true
    mkdir -p "./termux-packages/packages/${PKG_NAME}" || true
    cp "./scripts/build.sh" "./termux-packages/packages/${PKG_NAME}/build.sh"
-mv buildsrc /termux-packages/packages/
+mv buildsrc ./termux-packages/packages/
 
    "./termux-packages/scripts/run-docker.sh" ./build-package.sh -a "$arch" -I "$PKG_NAME"
 
