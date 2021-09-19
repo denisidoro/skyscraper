@@ -14,11 +14,10 @@ main() {
   fi
 
   sudo cp "$bin" "${TARGET_PATH}/${PKG_NAME}"
-  rm "${TARGET_PATH}/${PKG_BIN_NAME}" || true
 
   cd "$TARGET_PATH"
   ls -la .
-  tar -czf "${PKG_NAME}.tar.gz" *
+  tar -czf "${PKG_NAME}.tar.gz" "${PKG_NAME}"
   ls -la .
 }
 
