@@ -60,6 +60,7 @@ build() {
 main() {
    case "${1:-}" in
       "android-aarch64") run_termux_docker "aarch64" ;;
+      "android-arm") run_termux_docker "arm" ;;
       *) build ;;
    esac
 }

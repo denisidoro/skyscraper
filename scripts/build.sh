@@ -1,5 +1,5 @@
 TERMUX_PKG_HOMEPAGE=https://github.com/denisidoro/skyscraper
-TERMUX_PKG_DESCRIPTION="An interactive cheatsheet tool for the command-line"
+TERMUX_PKG_DESCRIPTION="TODO"
 TERMUX_PKG_LICENSE="Apache-2.0"
 TERMUX_PKG_MAINTAINER="@denisidoro"
 TERMUX_PKG_VERSION=4.1.0

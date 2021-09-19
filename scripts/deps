@@ -36,7 +36,7 @@ _install() {
 
 main() {
    case "${1:-}" in
-      "android-aarch64") return 0 ;;
+      *android*) return 0 ;;
    esac
 
   _install git bash tar

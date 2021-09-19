@@ -7,6 +7,7 @@ export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
 main() {
    case "${1:-}" in
       "android-aarch64") file "${SKYSCRAPER_HOME}/target/Skyscraper" | grep 'aarch64' ;;
+      "android-arm") file "${SKYSCRAPER_HOME}/target/Skyscraper" | grep 'arm' ;;
       *) Skyscraper -h | grep 'modded by' ;;
    esac
 }

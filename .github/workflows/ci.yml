@@ -3,12 +3,14 @@ name: Tests
 on: [push]
 
 jobs:
-  TermuxTest:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
+      - name: Install deps
+        run: ./scripts/deps
       - name: Build
-        run: ./scripts/install android-aarch64
+        run: ./scripts/install
       - name: Test
-        run: file target/Skyscraper android-aarch64
+        run: ./scripts/test
