@@ -14,3 +14,39 @@ jobs:
         run: ./scripts/install
       - name: Test
         run: ./scripts/test
+  binary:
+      name: Publish ${{ matrix.target }}
+      runs-on: ${{ matrix.os }}
+      strategy:
+        fail-fast: false
+        matrix:
+          # This should work with only the `include`s but it currently doesn't because of this bug:
+          # https://github.community/t5/How-to-use-Git-and-GitHub/GitHub-Actions-Matrix-options-dont-work-as-documented/td-p/29558
+          target: 
+            - osx-x86_64
+            - linux-x86_64
+            - android-aarch64
+            - android-arm
+          include:
+            - os: macos-latest
+              target: osx-x86_64
+            - os: ubuntu-latest
+              target: linux-x86_64
+            - os: ubuntu-latest
+              target: android-aarch64
+            - os: ubuntu-latest
+              target: android-arm
+      steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+      - name: Install deps
+        run: ./scripts/deps "${{ matrix.target }}"
+      - name: Build
+        run: ./scripts/install "${{ matrix.target }}"
+      - name: Test
+        run: ./scripts/test "${{ matrix.target }}" 
+      - name: Zip
+        run: ./scripts/zip
+      - name: Version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
