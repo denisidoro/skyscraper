@@ -8,7 +8,7 @@ source "${SKYSCRAPER_HOME}/scripts/core.sh"
 main() {
   mkdir -p "$TARGET_PATH" || true
    
-  local bin="${TARGET_BIN}"
+  local bin="$TARGET_BIN"
   if command -v "${PKG_BIN_NAME}"; then
     bin="$(which "${PKG_BIN_NAME}")"
   fi
