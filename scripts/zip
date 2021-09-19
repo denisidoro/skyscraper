@@ -14,6 +14,7 @@ main() {
   fi
 
   sudo cp "$bin" "${TARGET_PATH}/${PKG_NAME}"
+  rm "${TARGET_PATH}/${PKG_BIN_NAME}" || true
 
   cd "$TARGET_PATH"
   ls -la .

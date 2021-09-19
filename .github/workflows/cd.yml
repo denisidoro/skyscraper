@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  binary:
+  Binary:
     name: Publish ${{ matrix.target }}
     runs-on: ${{ matrix.os }}
     strategy:
