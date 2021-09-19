@@ -16,7 +16,7 @@ run_termux_docker() {
    local -r arch="$1"
 
    cd "$SKYSCRAPER_HOME"
-   cp * buildsrc || true
+   cp -R * buildsrc
 
    git clone https://github.com/termux/termux-packages --depth 1
    git clone https://github.com/termux/x11-packages --depth 1 || true
