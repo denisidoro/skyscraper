@@ -2,6 +2,9 @@
 set -euo pipefail
 set -x
 
+export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+source "${SKYSCRAPER_HOME}/scripts/core.sh"
+
 get_platform() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "osx"  
@@ -34,9 +37,29 @@ _install() {
    esac
 } 
 
+_setup_termux() {
+   cd "$SKYSCRAPER_HOME"
+
+   mkdir ./buildsrc
+   cp -R ./* ./buildsrc || true
+
+   git clone https://github.com/termux/termux-packages --depth 1
+
+   git clone https://github.com/termux/x11-packages --depth 1 || true
+   cp -r ./x11-packages/packages/* "./termux-packages/packages" || true
+   
+   mkdir -p "./termux-packages/packages/${PKG_NAME}" || true
+   rm "./termux-packages/packages/${PKG_NAME}/build.sh" || true
+   cp ./scripts/build.sh "./termux-packages/packages/${PKG_NAME}/build.sh"
+   mv ./buildsrc ./termux-packages/packages/
+}
+
 main() {
    case "${1:-}" in
-      *android*) return 0 ;;
+      *android*) 
+         _setup_termux
+         return 0
+         ;;
    esac
 
   _install git bash tar

@@ -9,8 +9,11 @@ TERMUX_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools"
 
 termux_step_make_install() {
    export PATH="${TERMUX_PREFIX}/opt/qt/cross/bin:${PATH}"
+
    cd /home/builder/termux-packages/packages/buildsrc || exit 1
+   pwd
    ls
+
    ./scripts/install
 	install -Dm755 -t $TERMUX_PREFIX/bin Skyscraper
 }

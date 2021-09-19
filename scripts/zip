@@ -3,6 +3,7 @@ set -euo pipefail
 set -x
 
 export SKYSCRAPER_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+source "${SKYSCRAPER_HOME}/scripts/core.sh"
 
 main() {
   local -r target="${SKYSCRAPER_HOME}/target"
@@ -13,7 +14,7 @@ main() {
     bin="$(which Skyscraper)"
   fi
 
-  sudo cp "$bin" "${target}/Skyscraper"
+  sudo cp "$bin" "${target}/skyscraper"
 
   cd "$target"
   ls -la .
